@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     Spinner spTools;
     EditText etcustomer, etphone, etquantity;
     RadioGroup rgSize;
-    RadioButton small;
+    RadioButton small, big;
     TextView tvResult;
     CheckBox cbBinoculars, cbBoots, cbCompass, cbFlashlight, cbMagnifier, cbSleepingbag, cbStove;
     int nAdditional;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         etquantity = (EditText) findViewById(R.id.editTextquantity);
         rgSize = (RadioGroup) findViewById(R.id.radioGroupSize);
         small = (RadioButton) findViewById(R.id.small);
+        big = (RadioButton) findViewById(R.id.big);
         cbBinoculars = (CheckBox) findViewById(R.id.binoculars);
         cbBoots = (CheckBox) findViewById(R.id.boots);
         cbCompass = (CheckBox) findViewById(R.id.compass);
@@ -54,16 +55,18 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                 doClick();
             }
         });
+
     }
 
     private void doClick() {
 
         if (isValid()) {
-            String nama, phonenumber, category;
+            String nama, phonenumber, category, size3;
             int tools, additional, size, jumlah, total;
             tools = 0;
             additional = 0;
             size = 0;
+            size3 = null;
             nama = etcustomer.getText().toString();
             phonenumber = etphone.getText().toString();
             jumlah = Integer.parseInt(etquantity.getText().toString());
@@ -89,16 +92,18 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
                 if (rb.getText().toString().equals("Small")) {
                     size = 5000;
+                    size3 = "Small";
                 } else if (rb.getText().toString().equals("Big")) {
                     size = 10000;
+                    size3 = "Big";
                 }
             }
 
             total = (tools + additional + size) * jumlah;
 
-            tvResult.setText("Your name   : " + nama + "with phone number : " + phonenumber + "\n\nBuy   : " + jumlah + size + tools + " Bag " + " with " + nAdditional + " additional. \n\nPrice    : ");
-
-
+            tvResult.setText("Name                    : " + nama + "\n\nPhone number    : " + phonenumber +
+                    "\n\nBuy                        : " + jumlah + " " + size3 + " " + spTools.getSelectedItem().toString()
+                    + " Bag " + " with " + nAdditional + " additional. \n\nPrice                     : Rp " + total);
         }
     }
 
@@ -118,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             etcustomer.setError(null);
         }
 
-
         if (amount.isEmpty()) {
             etquantity.setError("Insert your quantity of your Lets Hiking Tools order!");
             valid = false;
@@ -126,20 +130,33 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             etcustomer.setError(null);
         }
 
-        if (!cbFlashlight.isChecked() || !cbFlashlight.isChecked() || !cbFlashlight.isChecked()) {
-            cbFlashlight.setError("Choose your ice cream topping for make some happy!");
+        if (!cbBinoculars.isChecked() && !cbBoots.isChecked() && !cbCompass.isChecked() && !cbFlashlight.isChecked() && !cbMagnifier.isChecked() && !cbSleepingbag.isChecked() && !cbStove.isChecked()) {
+            cbBinoculars.setError("");
+            cbBoots.setError("");
+            cbCompass.setError("");
+            cbFlashlight.setError("");
+            cbMagnifier.setError("");
+            cbSleepingbag.setError("");
+            cbStove.setError("");
             valid = false;
         } else {
+            cbBinoculars.setError(null);
+            cbBoots.setError(null);
+            cbCompass.setError(null);
             cbFlashlight.setError(null);
+            cbMagnifier.setError(null);
+            cbSleepingbag.setError(null);
+            cbStove.setError(null);
         }
 
         if (rgSize.getCheckedRadioButtonId() == -1) {
-            small.setError("Do you wanna some glass?");
+            small.setError("");
+            big.setError("");
             valid = false;
         } else {
             small.setError(null);
+            big.setError(null);
         }
-
 
         return valid;
 
@@ -150,4 +167,5 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         if (isChecked) nAdditional += 1;
         else nAdditional -= 1;
     }
+
 }
