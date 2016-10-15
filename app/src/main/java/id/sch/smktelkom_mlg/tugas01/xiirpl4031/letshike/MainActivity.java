@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         cbFlashlight = (CheckBox) findViewById(R.id.flashlight);
         cbMagnifier = (CheckBox) findViewById(R.id.magnifier);
         cbSleepingbag = (CheckBox) findViewById(R.id.sleepingbag);
-        cbStove = (CheckBox) findViewById(R.id.compass);
+        cbStove = (CheckBox) findViewById(R.id.stove);
         tvResult = (TextView) findViewById(R.id.tvResult);
 
         cbBinoculars.setOnCheckedChangeListener(this);
@@ -56,6 +56,113 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             }
         });
 
+        findViewById(R.id.binoculars).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbBinoculars.setError(null);
+                cbBoots.setError(null);
+                cbCompass.setError(null);
+                cbFlashlight.setError(null);
+                cbMagnifier.setError(null);
+                cbSleepingbag.setError(null);
+                cbStove.setError(null);
+            }
+        });
+
+        findViewById(R.id.boots).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbBinoculars.setError(null);
+                cbBoots.setError(null);
+                cbCompass.setError(null);
+                cbFlashlight.setError(null);
+                cbMagnifier.setError(null);
+                cbSleepingbag.setError(null);
+                cbStove.setError(null);
+            }
+        });
+
+        findViewById(R.id.compass).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbBinoculars.setError(null);
+                cbBoots.setError(null);
+                cbCompass.setError(null);
+                cbFlashlight.setError(null);
+                cbMagnifier.setError(null);
+                cbSleepingbag.setError(null);
+                cbStove.setError(null);
+            }
+        });
+
+        findViewById(R.id.flashlight).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbBinoculars.setError(null);
+                cbBoots.setError(null);
+                cbCompass.setError(null);
+                cbFlashlight.setError(null);
+                cbMagnifier.setError(null);
+                cbSleepingbag.setError(null);
+                cbStove.setError(null);
+            }
+        });
+
+        findViewById(R.id.magnifier).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbBinoculars.setError(null);
+                cbBoots.setError(null);
+                cbCompass.setError(null);
+                cbFlashlight.setError(null);
+                cbMagnifier.setError(null);
+                cbSleepingbag.setError(null);
+                cbStove.setError(null);
+            }
+        });
+
+        findViewById(R.id.sleepingbag).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbBinoculars.setError(null);
+                cbBoots.setError(null);
+                cbCompass.setError(null);
+                cbFlashlight.setError(null);
+                cbMagnifier.setError(null);
+                cbSleepingbag.setError(null);
+                cbStove.setError(null);
+            }
+        });
+
+        findViewById(R.id.stove).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbBinoculars.setError(null);
+                cbBoots.setError(null);
+                cbCompass.setError(null);
+                cbFlashlight.setError(null);
+                cbMagnifier.setError(null);
+                cbSleepingbag.setError(null);
+                cbStove.setError(null);
+            }
+        });
+
+        findViewById(R.id.small).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                small.setError(null);
+                big.setError(null);
+            }
+        });
+        findViewById(R.id.big).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                small.setError(null);
+                big.setError(null);
+            }
+        });
+
+
     }
 
     private void doClick() {
@@ -66,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             tools = 0;
             additional = 0;
             size = 0;
+            category = null;
             size3 = null;
             nama = etcustomer.getText().toString();
             phonenumber = etphone.getText().toString();
@@ -127,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             etquantity.setError("Insert your quantity of your Lets Hiking Tools order!");
             valid = false;
         } else {
-            etcustomer.setError(null);
+            etquantity.setError(null);
         }
 
         if (!cbBinoculars.isChecked() && !cbBoots.isChecked() && !cbCompass.isChecked() && !cbFlashlight.isChecked() && !cbMagnifier.isChecked() && !cbSleepingbag.isChecked() && !cbStove.isChecked()) {
